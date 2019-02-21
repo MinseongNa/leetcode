@@ -1,4 +1,4 @@
-package problems;
+package problems.medium;
 
 import xyz.msna.mdmaker.annotation.ExecuteResult;
 
@@ -19,7 +19,7 @@ import xyz.msna.mdmaker.annotation.ExecuteResult;
  */
 
 @ExecuteResult(runtimeMs = 0, memoryMb = 0f )
-public class No_2_e_addTwoNumbers {
+public class No_2_m_addTwoNumbers {
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode( 2);

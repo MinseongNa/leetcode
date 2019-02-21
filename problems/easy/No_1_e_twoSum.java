@@ -1,4 +1,4 @@
-package problems;
+package problems.easy;
 
 import xyz.msna.mdmaker.annotation.ExecuteResult;
 
