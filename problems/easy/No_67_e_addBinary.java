@@ -25,40 +25,8 @@ import java.util.*;
  */
 public class No_67_e_addBinary {
 
-    // 이 코드는 다른 사람이 푼 내용이다.
-    @ExecuteResult( runtimeMs = 1, memoryMb = 34.7f)
-    public static String addBinary(String a, String b) {
-        int lenA = a.length()-1;
-        int lenB = b.length()-1;
-
-        StringBuilder res = new StringBuilder();
-        int carryOver=0;
-        // a와 b의 가장 낮은 자릿수부터 더하여 res에 append한다.
-        // a와 b중 하나라도 남은 자릿수가 있으면 loop를 돈다.
-        while( lenA >= 0 || lenB >= 0 ){
-            int count = carryOver;
-            // ch타입에서 '0'을 빼서 int값으로 처리한다.
-            count += ( lenA >= 0 ) ? a.charAt( lenA ) - '0' : 0;
-            count += ( lenB >= 0 ) ? b.charAt( lenB ) - '0' : 0;
-
-            carryOver = count / 2;
-            count = count % 2;
-            res.append( count );
-
-            lenA--;
-            lenB--;
-        }
-
-        if( carryOver == 1 ){
-            res.append( carryOver );
-        }
-
-        // res는 가장 낮은 자리부터의 값이므로 reverse해서 return한다.
-        return res.reverse().toString();
-    }
-
     // 큰 String의 길이만큼 int배열을 만들어두고 뒷쪽부터 채워넣었다.
-    @ExecuteResult(runtimeMs =  3, memoryMb =  34.6f)
+    @ExecuteResult(runtimeMs =  2, memoryMb =  34.6f)
     public static String addBinaryUseReverseIndex(String a, String b) {
         int maxLength = a.length() > b.length() ? a.length() : b.length();
         int[] resultArr = new int[ maxLength ];
@@ -94,8 +62,40 @@ public class No_67_e_addBinary {
         return Long.toBinaryString(Long.parseLong( a, 2 ) + Long.parseLong( b, 2 ) );
     }
 
+    // 이 코드는 다른 사람이 푼 내용이다.
+    @ExecuteResult( runtimeMs = 1, memoryMb = 34.7f)
+    public static String addBinary(String a, String b) {
+        int lenA = a.length()-1;
+        int lenB = b.length()-1;
+
+        StringBuilder res = new StringBuilder();
+        int carryOver=0;
+        // a와 b의 가장 낮은 자릿수부터 더하여 res에 append한다.
+        // a와 b중 하나라도 남은 자릿수가 있으면 loop를 돈다.
+        while( lenA >= 0 || lenB >= 0 ){
+            int count = carryOver;
+            // ch타입에서 '0'을 빼서 int값으로 처리한다.
+            count += ( lenA >= 0 ) ? a.charAt( lenA ) - '0' : 0;
+            count += ( lenB >= 0 ) ? b.charAt( lenB ) - '0' : 0;
+
+            carryOver = count / 2;
+            count = count % 2;
+            res.append( count );
+
+            lenA--;
+            lenB--;
+        }
+
+        if( carryOver == 1 ){
+            res.append( carryOver );
+        }
+
+        // res는 가장 낮은 자리부터의 값이므로 reverse해서 return한다.
+        return res.reverse().toString();
+    }
+
     public static void main(String[] args) {
-        System.out.println( Integer.toBinaryString( Integer.MAX_VALUE ).length() );
+        System.out.println( Long.toBinaryString( Long.MAX_VALUE ).length() );
 
         List<Map<String,String>> testList = new ArrayList<>();
         Map<String,String> test = new HashMap<>();
