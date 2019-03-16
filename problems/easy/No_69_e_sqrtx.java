@@ -1,5 +1,9 @@
 package problems.easy;
 
+import xyz.msna.mdmaker.annotation.ExecuteResult;
+
+import java.util.TreeMap;
+
 /**
  * 69. Sqrt(x)
  *
@@ -25,7 +29,32 @@ package problems.easy;
  */
 public class No_69_e_sqrtx {
 
-    public static int mySqrt(int x) {
+    public static TreeMap<Long, Long> squareMap = new TreeMap<>();
+    static {
+        for( long i = 1; i < Integer.MAX_VALUE; i++ ){
+            squareMap.put( i * i, i );
+        }
+    }
+
+    public static int mySqrt( int x ){
+
+    }
+
+    @ExecuteResult( runtimeMs = 35, memoryMb = 38.1f )
+    public static int mySqrt3( int x ){
+        if( x <= 1 ){
+            return x;
+        }
+        for( long i = 1 ; i < Integer.MAX_VALUE; i++){
+            if( ( ( i + 1 ) * ( i + 1 ) ) > x ){
+                return (int)i;
+            }
+        }
+        return -1;
+    }
+
+    @ExecuteResult( runtimeMs = 13, memoryMb = 38 )
+    public static int mySqrt2(int x) {
         int l = 1;
         int r = x;
         while (l <= r) {
@@ -39,7 +68,7 @@ public class No_69_e_sqrtx {
 
     public static void main(String[] args) {
 
-        int[] testArr = { 4, 8 };
+        int[] testArr = { 4, 8, 2147395600 };
         for( int test : testArr ){
             System.out.println( "Input: " + test );
             System.out.println( "Output: " + mySqrt( test ) );
